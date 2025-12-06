@@ -149,12 +149,12 @@ Sorted Top-K matches
 
 You can paste these into your Streamlit UI:
 
-🔹 Test Case 1 — Lost Backpack
-Description: A black backpack with two side pockets and laptop space.
+🔹 Test Case 1 — Lost Keychain
+Description: Keychain (black) lost near walkway.
 Category: Bag
-Location lost: Library
+Location lost: walkway
 Time lost: 2025-02-18 14:30
-Brand: HP
+Brand: Samsung 
 
 🔹 Test Case 2 — Lost Water Bottle
 Description: Blue metal bottle with a dent at the bottom.
@@ -174,12 +174,12 @@ Category: Umbrella
 Location lost: Parking Area
 Time lost: 2025-02-20 18:45
 
-🔹 Test Case 5 — Lost Headphones
-Description: Black wireless over-ear headphones, slight scratch left side.
+🔹 Test Case 5 — Lost Watch
+Description: Watch (black) lost near walkway.
 Category: Electronics
-Location lost: Hostel Common Room
+Location lost: walkway
 Time lost: 2025-02-16 20:10
-Brand: Boat
+Brand: Casio 
 
 🛠️ How to Run the Project
 Install Requirements
