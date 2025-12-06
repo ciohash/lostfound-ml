@@ -56,25 +56,6 @@ Top-1 Accuracy: 0.9502
 
 Top-3 Accuracy: 0.9998
 
-📂 Repository Structure
-project/
-│
-├── prepare_pairs.py                   # Builds pairwise training data + TF-IDF
-├── train_model.py                     # Trains Logistic Regression + RandomForest
-├── evaluate_retrieval_fast.py         # Fast evaluation (Top-100 candidate ranking)
-│
-├── app_streamlit_model.py             # Streamlit UI using trained model
-│
-├── lost_found_dataset_realistic_metadata_30k.csv
-├── lost_found_exact_match_pairs.csv
-│
-├── tfidf.joblib                       # Generated TF-IDF vectorizer
-├── precomputed_matrices.npz           # Sparse TF-IDF matrix
-├── scaler.joblib                      # Feature scaler
-├── model_lr.joblib                    # Logistic Regression model
-├── model_rf.joblib                    # RandomForest model
-│
-└── requirements.txt
 
 📘 Dataset Description
 
