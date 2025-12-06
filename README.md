@@ -31,18 +31,29 @@ We built a realistic dataset with metadata, noise, typos, slang, mismatched item
 ✔ High accuracy:
 
 Evaluated on 12017 pairs
+
 Top-1 accuracy: 0.9502
+
 Top-3 accuracy: 0.9998
+
 Top-5 accuracy: 1.0000
+
 MRR: 0.9749
 
 === Classification Metrics ===
+
 Best Threshold: 0.9800
+
 F1 Score: 0.8850
+
 Precision: 0.7937
+
 Recall: 1.0000
+
 AUC: 0.9989
+
 Top-1 Accuracy: 0.9502
+
 Top-3 Accuracy: 0.9998
 
 📂 Repository Structure
@@ -184,18 +195,29 @@ Evaluate using Top-K metrics
 Using evaluate_retrieval_fast.py, we obtained:
 
 Evaluated on 12017 pairs
+
 Top-1 accuracy: 0.9502
+
 Top-3 accuracy: 0.9998
+
 Top-5 accuracy: 1.0000
+
 MRR: 0.9749
 
 === Classification Metrics ===
+
 Best Threshold: 0.9800
+
 F1 Score: 0.8850
+
 Precision: 0.7937
+
 Recall: 1.0000
+
 AUC: 0.9989
+
 Top-1 Accuracy: 0.9502
+
 Top-3 Accuracy: 0.9998
 
 These results show excellent real-world matching performance.
@@ -267,9 +289,8 @@ Slang + typo handling
 
 Timestamp-based scoring
 
-📝 Deliverables (as per project PDF)
 
-This project covers every requirement from the official PDF :
+This project covers every requirement  :
 
 ✔ Dataset created
 ✔ ML approach with classical models only
