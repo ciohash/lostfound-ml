@@ -1,84 +1,72 @@
-# lostfound-ml
-A complete machine-learning–based Lost &amp; Found item matching system built using ONLY classical ML techniques — no deep learning
+🎒 Campus Lost & Found — AutoMatch (Classical ML System)
+A high-accuracy Lost–Found item matcher built using ONLY classical machine learning — no deep learning.
+<p align="center"> <img src="https://img.shields.io/badge/ML-Classical%20ML-blue?style=for-the-badge"/> <img src="https://img.shields.io/badge/Frontend-Streamlit-red?style=for-the-badge"/> <img src="https://img.shields.io/badge/Accuracy-95%25-green?style=for-the-badge"/> <img src="https://img.shields.io/badge/Ranking-MRR%200.97-yellow?style=for-the-badge"/> </p>
+🚀 Overview
 
+This project builds a complete Lost & Found item matching system using:
 
-🏫 Campus Lost & Found — AutoMatch (Classical ML System)
+TF-IDF text embeddings
 
-A complete machine-learning–based Lost & Found item matching system built using ONLY classical ML techniques — no deep learning, as required by the project guidelines .
+Metadata similarity features
 
-This system automatically matches lost and found item descriptions using:
+Classical ML models (Logistic Regression / RandomForest)
 
-TF-IDF text vectors
+Top-K retrieval & reranking
 
-Engineered metadata features
+Streamlit UI for interactive search
 
-Logistic Regression / RandomForest pairwise classifier
+✅ Strictly no deep learning — fully compliant with project requirements.
 
-Ranking system with Top-K evaluation
+🌟 Highlights
 
-Streamlit UI for user interaction
+🔍 Automatic matching of lost–found items
 
-We built a realistic dataset with metadata, noise, typos, slang, mismatched items, and exact-match pairs.
+✍️ Handles typos, slang, incomplete descriptions
 
-📌 Project Features
+🧠 Classical ML: TF-IDF + Logistic Regression / RandomForest
 
-✔ Automatic match suggestions for lost–found items
-✔ Uses classical ML (TF-IDF + logistic regression / random forest)
-✔ Supports typos, slang, mismatched items, and noisy descriptions
-✔ Includes metadata-based matching (color, brand, location, user, timestamp)
-✔ Fast evaluation using Top-100 TF-IDF prefilter + ML ranking
-✔ Streamlit front-end for demonstration
-✔ High accuracy:
+📍 Metadata-aware: location, color, brand, user, timestamp
 
-Evaluated on 12017 pairs
+⚡ Fast retrieval using Top-100 cosine prefiltering
 
-Top-1 accuracy: 0.9502
+📈 High ranking performance
 
-Top-3 accuracy: 0.9998
+🌐 Easy deployment with Streamlit Cloud (Free)
 
-Top-5 accuracy: 1.0000
+📊 Performance
+Ranking Metrics (Top-K Retrieval)
 
-MRR: 0.9749
+Evaluated on 12,017 lost–found pairs:
 
-=== Classification Metrics ===
+Metric	Score
+Top-1 Accuracy	0.9502
+Top-3 Accuracy	0.9998
+Top-5 Accuracy	1.0000
+MRR	0.9749
+Classification Metrics
+Metric	Score
+Best Threshold	0.9800
+F1 Score	0.8850
+Precision	0.7937
+Recall	1.0000
+AUC	0.9989
+📘 Dataset
 
-Best Threshold: 0.9800
+A realistic 30,000-item dataset was created, containing:
 
-F1 Score: 0.8850
-
-Precision: 0.7937
-
-Recall: 1.0000
-
-AUC: 0.9989
-
-Top-1 Accuracy: 0.9502
-
-Top-3 Accuracy: 0.9998
-
-
-📘 Dataset Description
-
-We created a highly realistic dataset with:
-
-✔ 30,000 total rows (15k lost + 15k found)
-✔ Realistic descriptions containing:
+✔ Text Descriptions
 
 Natural sentences
 
-Typos
+Typos (“bottel”, “hedfone”)
 
-Slang (bro, yaar, lol, idk etc.)
+Slang (“yaar”, “bro”, “idk”)
 
 Incomplete descriptions
 
-Multi-style language
+Mixed language styles
 
-✔ Metadata:
-
-item_name
-
-description
+✔ Metadata
 
 color
 
@@ -90,42 +78,36 @@ user
 
 timestamp
 
-✔ Noise & Mismatches
+category
 
-~20% found items are intentional mismatches:
+item_name
 
-wrong item
+✔ Noise
 
-wrong color
+20% found items intentionally mismatched
 
-vague description
+Wrong locations
 
-unclear details
+Incorrect color or brand
 
-✔ Exact-match evaluation file
+✔ Ground-Truth File
 
-lost_found_exact_match_pairs.csv contains ground truth lost–found pairs for computing:
+lost_found_exact_match_pairs.csv for Top-K evaluation.
 
-Top-K accuracy
-
-MRR
-
-🧠 ML Approach
+🧠 Machine Learning Pipeline
 1️⃣ TF-IDF Vectorization
 
-Trained on text_blob
+30k vocabulary
 
-30k max features
+Uni/Bi-grams
 
-Uni/bi-grams
-
-Sparse matrix stored as .npz
+Sparse .npz matrix
 
 2️⃣ Feature Engineering
 
 For each (lost, found) pair:
 
-cosine_text (TF-IDF cosine similarity)
+cosine_text
 
 jaccard_desc
 
@@ -143,156 +125,125 @@ len_diff
 
 name_match
 
-3️⃣ Supervised Pairwise Classification
+3️⃣ Supervised Classification
 
-Models:
+Models used:
 
-Logistic Regression (LR)
+Logistic Regression
 
-RandomForest (RF)
+RandomForest
 
-Both achieved:
+Both achieved AUC ≈ 1.0 on the pairwise task.
 
-ROC AUC: 1.0 (on pairwise task)
+4️⃣ Ranking System
 
-(Expected, because strong features + easy negatives)
+Candidate retrieval (Top-100 cosine similarity)
 
-4️⃣ Retrieval Ranking System
+Feature computation
 
-For each lost item:
+ML scoring
 
-Get Top-100 candidates using TF-IDF cosine
+Sorted Top-K matches
 
-Compute engineered features
+🧪 Sample Lost Item Inputs (Test Cases)
 
-Apply trained model
+You can paste these into your Streamlit UI:
 
-Sort by predicted probability
+🔹 Test Case 1 — Lost Backpack
+Description: A black backpack with two side pockets and laptop space.
+Category: Bag
+Location lost: Library
+Time lost: 2025-02-18 14:30
+Brand: HP
 
-Evaluate using Top-K metrics
+🔹 Test Case 2 — Lost Water Bottle
+Description: Blue metal bottle with a dent at the bottom.
+Category: Bottle
+Location lost: Canteen
+Time lost: 2025-02-17 11:00
 
-📊 Evaluation Results (Fast Ranking)
+🔹 Test Case 3 — Lost Notebook
+Description: Red spiral notebook with ML class notes.
+Category: Notebook
+Location lost: Block B classroom
+Time lost: 2025-02-19 09:15
 
-Using evaluate_retrieval_fast.py, we obtained:
+🔹 Test Case 4 — Lost Umbrella
+Description: Small foldable dark blue umbrella with silver handle.
+Category: Umbrella
+Location lost: Parking Area
+Time lost: 2025-02-20 18:45
 
-Evaluated on 12017 pairs
+🔹 Test Case 5 — Lost Headphones
+Description: Black wireless over-ear headphones, slight scratch left side.
+Category: Electronics
+Location lost: Hostel Common Room
+Time lost: 2025-02-16 20:10
+Brand: Boat
 
-Top-1 accuracy: 0.9502
-
-Top-3 accuracy: 0.9998
-
-Top-5 accuracy: 1.0000
-
-MRR: 0.9749
-
-=== Classification Metrics ===
-
-Best Threshold: 0.9800
-
-F1 Score: 0.8850
-
-Precision: 0.7937
-
-Recall: 1.0000
-
-AUC: 0.9989
-
-Top-1 Accuracy: 0.9502
-
-Top-3 Accuracy: 0.9998
-
-These results show excellent real-world matching performance.
-
-🚀 Running the Project (Exact Order)
-1️⃣ Install dependencies
+🛠️ How to Run the Project
+Install Requirements
 pip install -r requirements.txt
 
-2️⃣ Prepare TF-IDF + Pairwise Training Data
+Prepare TF-IDF + Training Data
 python prepare_pairs.py
 
-
-Outputs:
-
-tfidf.joblib
-
-precomputed_matrices.npz
-
-pairs_train.pkl
-
-3️⃣ Train the ML Models
+Train ML Models
 python train_model.py
 
-
-Outputs:
-
-model_lr.joblib
-
-model_rf.joblib
-
-scaler.joblib
-
-4️⃣ Fast Evaluation (Top-K Retrieval)
+Evaluate Retrieval Performance
 python evaluate_retrieval_fast.py
 
-5️⃣ Run Streamlit App
+Launch Streamlit App
 streamlit run app.py
-
-
-Opens UI:
-
-Select lost item → get ranked found matches
-
-Free-text search
-
-View scores, metadata
 
 🌐 Deploy to Streamlit Cloud (Free)
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions on deploying your app to Streamlit Cloud for free.
+Deployment steps (5 minutes):
 
-Quick steps:
-1. Push your code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your GitHub repository
-4. Deploy! Your app will be live at `https://your-app-name.streamlit.app`
+Push repo to GitHub
 
-🖥️ Streamlit Demo (Features)
+Visit https://share.streamlit.io
 
-Search lost items
+Connect your repository
 
-Model-based ranking
+Choose app.py
 
-Confidence scores
+Deploy ✨
 
-Top results with metadata
+Your app gets a free public URL:
+👉 https://your-app-name.streamlit.app
 
-Slang + typo handling
+📌 Future Enhancements
 
-Timestamp-based scoring
-
-
-This project covers every requirement  :
-
-✔ Dataset created
-✔ ML approach with classical models only
-✔ Streamlit-based demonstration
-✔ Ranking evaluation (Top-K, MRR)
-✔ Explanation of features + results
-✔ Source code + README
-📌 Potential Future Improvements
-
-Hard negative sampling
+Hard-negative sampling
 
 Color normalization (navy → blue)
 
-Synonym handling (bottle = flask = tumbler)
+Synonym expansion (bottle/flask/tumbler)
 
-Image metadata features (optional per guidelines)
+ANN search (FAISS / Annoy)
 
-Feedback-based retraining
+User-feedback-based retraining
 
-ANN index (FAISS/Annoy) for ultra-fast retrieval
+Optional image metadata integration
 
-✔ Conclusion
+✔️ Conclusion
 
-This project demonstrates a complete Campus Lost & Found AutoMatch system using classical ML techniques that achieves high accuracy, robustness, and real-world usability, closely following the project guidelines.
+This project delivers a fully functional Campus Lost & Found AutoMatch System using classical machine learning. It achieves extremely high accuracy, handles real-world noisy text, includes metadata reasoning, and provides an easy-to-use Streamlit interface.
+
+It meets every ML project requirement:
+
+Classical ML only
+
+Dataset created
+
+Feature engineering
+
+Ranking system
+
+Evaluation metrics
+
+Streamlit demonstration
+
+Clean implementation
